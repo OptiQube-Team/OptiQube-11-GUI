@@ -125,6 +125,38 @@
             });
         });
 
+        // Check for updates
+
+        const currentVersion = "0.0.1"
+        const updateServer = "https://optiqube.dogwaffle.world/version-check"
+
+        window.onload = function() {
+            setTimeout(function() {
+                const updateCheck1 = document.createElement('div');
+                const updateCheck2 = document.createElement('div');
+                updateCheck1.textContent = 'Checking for updates...';
+                terminalOutput.appendChild(updateCheck1)
+
+                fetch(updateServer) // Example API
+                    .then(response => {
+                        if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Received data:', data);
+                        updateCheck2.textContent = data;
+                        terminalOutput.appendChild(updateCheck2)
+                    })
+                    .catch(error => {
+                        console.error('Fetch error:', error);
+                        updateCheck2.textContent = data;
+                        terminalOutput.appendChild(updateCheck2)
+          });
+            }, 500);
+        };
+
         const volumeSlider = document.getElementById('volume');
         const volumeValueDisplay = document.getElementById('volumeValue');
 

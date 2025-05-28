@@ -47,7 +47,7 @@ body {
   padding: 1rem;
   border-radius: 0.5rem;
   /* rounded-lg */
-  height: 420px;
+  height: 360px;
   overflow-y: auto;
   font-family: 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", monospace;
   font-size: 0.875rem;
