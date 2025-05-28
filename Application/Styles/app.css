@@ -1,102 +1,98 @@
 body {
   font-family: 'Inter', sans-serif;
-  overscroll-behavior: none;
-  /* Prevents "pull-to-refresh" and other overscroll behaviors */
+  transition: background 0.3s, color 0.3s;
 }
 
-/* Custom scrollbar for webkit browsers */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+.theme-dark {
+  background-color: #000;
+  color: #e0e0e0;
 }
 
-::-webkit-scrollbar-track {
-  background: #2d3748;
-  /* dark-700 */
-}
-
-::-webkit-scrollbar-thumb {
-  background: #4a5568;
-  /* dark-600 */
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #718096;
-  /* dark-500 */
+.theme-light {
+  background-color: #f8f8f8;
+  color: #1a1a1a;
 }
 
 .titlebar {
   -webkit-app-region: drag;
-  /* Allows dragging the window via this element */
   user-select: none;
-  /* Prevents text selection */
+  height: 48px; /* Increased height */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
 }
+
+.btn-window {
+  background: transparent;
+  padding: 0.4rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s;
+  -webkit-app-region: no-drag;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .window-controls button {
   -webkit-app-region: no-drag;
-  /* Excludes buttons from the draggable region */
 }
 
-/* Basic styling for a terminal-like appearance */
+
+.sidebar {
+  width: 16rem;
+  background-color: inherit;
+  color: inherit;
+  border-right: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.content-box {
+  background-color: inherit;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+}
+
 .terminal {
-  background-color: #1a202c;
-  /* dark-900 */
-  color: #c0e9d0;
-  /* A light green, good for terminal text */
+  background-color: #000;
+  color: #68d391;
   padding: 1rem;
   border-radius: 0.5rem;
-  /* rounded-lg */
-  height: 360px;
+  height: 300px;
   overflow-y: auto;
-  font-family: 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", monospace;
-  font-size: 0.875rem;
-  /* text-sm */
-  line-height: 1.5;
-}
-
-.terminal-output div:before {
-  content: "> ";
-  color: #68d391;
-  /* green-400 */
-}
-
-.terminal-input {
-  display: flex;
-  margin-top: 0.5rem;
-  /* mt-2 */
-}
-
-.terminal-input span {
-  color: #68d391;
-  /* green-400 */
-  margin-right: 0.5rem;
-  /* mr-2 */
-}
-
-.terminal-input input {
-  background: transparent;
-  border: none;
-  color: #c0e9d0;
-  flex-grow: 1;
-  outline: none;
+  font-family: monospace;
+  font-size: 0.9rem;
 }
 
 .tweak-item {
-  transition: background-color 0.2s ease-in-out;
+  padding: 0.3rem;
+  transition: background 0.2s;
+  border-radius: 0.25rem;
 }
 
 .tweak-item:hover {
-  background-color: #2d3748;
-  /* dark-700 */
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-.tweak-item input:checked+label {
-  color: #68d391;
-  /* green-400 */
-  font-weight: 500;
+.theme-light .terminal {
+  background-color: #f1f1f1;
+  color: #007700;
 }
 
-.tweak-item label {
-  cursor: pointer;
+.theme-light .tweak-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
+}
+
+.theme-light ::-webkit-scrollbar-thumb {
+  background: #aaa;
 }

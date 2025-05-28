@@ -1,178 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OptiQube 11</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./Styles/app.css">
 </head>
-<body class="bg-gray-900 text-gray-100 flex flex-col h-screen overflow-hidden">
 
-    <div class="titlebar bg-gray-800 shadow-md flex items-center justify-between px-2 py-1 h-10 flex-shrink-0">
+<body class="theme-dark">
+
+    <div class="titlebar flex items-center justify-between px-2 py-1 h-10 flex-shrink-0">
         <div class="flex items-center">
-            <svg class="w-5 h-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-            <span class="text-sm font-semibold text-gray-300">OptiQube 11</span>
+            <svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span class="text-sm font-semibold">OptiQube 11</span>
         </div>
-        <div class="window-controls flex items-center">
-            <button id="min-btn" class="px-3 py-1 hover:bg-gray-700 rounded-md text-gray-400 hover:text-gray-200 transition-colors duration-150 text-xs">─</button>
-            <button id="max-btn" class="px-3 py-1 hover:bg-gray-700 rounded-md text-gray-400 hover:text-gray-200 transition-colors duration-150 text-xs">□</button>
-            <button id="close-btn" class="px-3 py-1 hover:bg-red-600 hover:text-white rounded-md text-gray-400 transition-colors duration-150 text-xs">✕</button>
+        <div class="window-controls flex gap-2">
+            <button id="min-btn" class="btn-window group">
+                <svg width="12" height="12" viewBox="0 0 12 12" class="fill-yellow-400 group-hover:fill-yellow-500">
+                    <rect y="5.5" width="12" height="1" rx="0.5" />
+                </svg>
+            </button>
+            <button id="max-btn" class="btn-window group">
+                <svg width="12" height="12" viewBox="0 0 12 12" class="stroke-blue-400 group-hover:stroke-blue-500"
+                    fill="none" stroke-width="1">
+                    <rect x="2" y="2" width="8" height="8" rx="1" />
+                </svg>
+            </button>
+            <button id="close-btn" class="btn-window group">
+                <svg width="12" height="12" viewBox="0 0 12 12" class="stroke-red-400 group-hover:stroke-red-500"
+                    fill="none" stroke-width="1.5">
+                    <line x1="2" y1="2" x2="9" y2="9" />
+                    <line x1="9" y1="2" x2="2" y2="9" />
+                </svg>
+            </button>
         </div>
+
     </div>
 
     <div class="flex-grow flex overflow-hidden">
-        <aside class="w-64 bg-gray-800 p-4 space-y-6 overflow-y-auto flex-shrink-0">
-            <h2 class="text-xl font-semibold text-gray-200 border-b border-gray-700 pb-2">Tweaks</h2>
+        <aside class="sidebar p-4 space-y-6 overflow-y-auto flex-shrink-0">
+            <h2 class="text-xl font-semibold border-b pb-2">Tweaks</h2>
             <div class="space-y-3">
-                <div class="tweak-item p-2 rounded-md">
-                    <input type="checkbox" id="tweak1" name="tweak1" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 rounded focus:ring-blue-600 focus:ring-offset-gray-800">
-                    <label for="tweak1" class="ml-2 text-gray-300">Install Firefox</label>
+                <div class="tweak-item">
+                    <input type="checkbox" id="tweak1" disabled class="form-checkbox h-4 w-4 text-green-400">
+                    <label for="tweak1" class="ml-2">Install Firefox</label>
                 </div>
-
-                <div class="tweak-item p-2 rounded-md">
-                    <input type="checkbox" id="tweak2" name="tweak2" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 rounded focus:ring-blue-600 focus:ring-offset-gray-800">
-                    <label for="tweak2" class="ml-2 text-gray-300">Remove MSEdge</label>
+                <div class="tweak-item">
+                    <input type="checkbox" id="tweak2" disabled checked class="form-checkbox h-4 w-4 text-green-400">
+                    <label for="tweak2" class="ml-2">Remove MSEdge</label>
                 </div>
-
-                <div class="tweak-item p-2 rounded-md">
-                    <input type="checkbox" id="tweak3" disabled name="tweak3" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 rounded focus:ring-blue-600 focus:ring-offset-gray-800" checked>
-                    <label for="tweak3" class="ml-2 text-gray-300">Remove Bloatware</label>
+                <div class="tweak-item">
+                    <input type="checkbox" id="tweak3" disabled checked class="form-checkbox h-4 w-4 text-green-400">
+                    <label for="tweak3" class="ml-2">Remove Bloatware</label>
                 </div>
-
                 <div>
-                    <h3 class="text-sm font-medium text-gray-400 mb-1">Theme Mode:</h3>
-                    <div class="tweak-item p-2 rounded-md">
-                        <input type="radio" id="themeLight" name="theme" value="light" class="form-radio h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 focus:ring-blue-600 focus:ring-offset-gray-800">
-                        <label for="themeLight" class="ml-2 text-gray-300">Light Mode</label>
+                    <h3 class="text-sm font-medium mb-1">Theme Mode:</h3>
+                    <div class="tweak-item">
+                        <input type="radio" id="themeLight" name="theme" value="light"
+                            class="form-radio h-4 w-4 text-green-400">
+                        <label for="themeLight" class="ml-2">Light Mode</label>
                     </div>
-                    <div class="tweak-item p-2 rounded-md">
-                        <input type="radio" id="themeDark" name="theme" value="dark" class="form-radio h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 focus:ring-blue-600 focus:ring-offset-gray-800" checked>
-                        <label for="themeDark" class="ml-2 text-gray-300">Dark Mode</label>
+                    <div class="tweak-item">
+                        <input type="radio" id="themeDark" name="theme" value="dark"
+                            class="form-radio h-4 w-4 text-green-400" checked>
+                        <label for="themeDark" class="ml-2">Dark Mode</label>
                     </div>
                 </div>
-
             </div>
         </aside>
 
-        <main class="flex-grow p-6 flex flex-col overflow-y-auto">
-            <div class="bg-gray-800 shadow-lg rounded-lg p-6 mb-6">
-                <h1 class="text-2xl font-bold text-gray-100">About OptiQube 11</h1>
-                <div class="mt-1 space-y-2 text-gray-500">
-                    <p>OptiQube 11 is made for older computers running Windows 11 but are slow. This project is made to speed them up!</p>
-                </div>
+        <main class="flex-grow p-6 flex flex-col overflow-y-auto main-content">
+            <div class="rounded-lg p-6 mb-6 content-box">
+                <h1 class="text-2xl font-bold">About OptiQube 11</h1>
+                <p class="mt-2">OptiQube 11 is made for older computers running Windows 11 but are slow. This project is
+                    made to speed them up!</p>
             </div>
 
-            <div class="flex-shrink-0">
-                <h2 class="text-xl font-semibold text-gray-200 mb-2">Console</h2>
-                <div id="terminalOutput" class="terminal">
+            <div>
+                <h2 class="text-xl font-semibold mb-2">Console</h2>
+                <div id="terminalOutput" class="terminal mb-4">
                     <div>This is the OptiQube Console</div>
                     <div>The installation/selection logs will be displayed here</div>
+                </div>
+                <button id="start-cmd" onclick="logCMDButton()"
+                    class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded">
+                    Install OptiQube
+                </button>
             </div>
-            <button id="start-cmd" onclick="logCMDButton()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mt-4">
-                Install OptiQube
-            </button>
         </main>
     </div>
+
     <script src="../Core/renderer.js"></script>
 
     <script>
         const terminalOutput = document.getElementById('terminalOutput');
-        const terminalInput = document.getElementById('terminalInput');
 
-        if (terminalInput && terminalOutput) {
-            terminalInput.addEventListener('keypress', function(event) {
-                if (event.key === 'Enter') {
-                    const command = terminalInput.value.trim();
-                    if (command) {
-                        const outputLine = document.createElement('div');
-                        outputLine.textContent = command;
-                        terminalOutput.appendChild(outputLine);
+        function appendToTerminal(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            terminalOutput.appendChild(div);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
 
-                        if (command.toLowerCase() === 'help') {
-                            const helpLine = document.createElement('div');
-                            helpLine.innerHTML = `Available commands: <br> - help: Show this message <br> - clear: Clear the console <br> - date: Show current date`;
-                            terminalOutput.appendChild(helpLine);
-                        } else if (command.toLowerCase() === 'clear') {
-                            terminalOutput.innerHTML = '<div>Console cleared.</div>';
-                        } else if (command.toLowerCase() === 'date') {
-                            const dateLine = document.createElement('div');
-                            dateLine.textContent = `Current date: ${new Date().toLocaleString()}`;
-                            terminalOutput.appendChild(dateLine);
-                        } else {
-                            const unknownCmdLine = document.createElement('div');
-                            unknownCmdLine.textContent = `Unknown command: ${command}`;
-                            terminalOutput.appendChild(unknownCmdLine);
-                        }
-
-                        terminalInput.value = '';
-                        terminalOutput.scrollTop = terminalOutput.scrollHeight;
-                    }
-                }
-            });
+        function logCMDButton() {
+            appendToTerminal('Opening Command Prompt on the host PC...');
         }
 
         document.querySelectorAll('input[name="theme"]').forEach(radio => {
             radio.addEventListener('change', function () {
-                if (this.checked) {
-                    const themeOut = document.createElement('div');
-                    console.log("Selected:", this.value);
-                    themeOut.textContent = 'User selected the ' + this.value + ' theme.';
-                    terminalOutput.appendChild(themeOut)
-                }
+                document.body.className = this.value === 'light' ? 'theme-light' : 'theme-dark';
+                appendToTerminal(`Switched to ${this.value} theme.`);
             });
         });
 
-        function logCMDButton() {
-            const logButtonCMD = document.createElement('div');
-            logButtonCMD.textContent = 'Opening Command Prompt on the host pc';
-            terminalOutput.appendChild(logButtonCMD)
-        }
-
-        // Check for updates
-
-        const currentVersion = "0.0.1"
-        const updateServer = "https://optiqube.dogwaffle.world/version-check"
-
-        window.onload = function() {
-            setTimeout(function() {
-                const updateCheck1 = document.createElement('div');
-                const updateCheck2 = document.createElement('div');
-                updateCheck1.textContent = 'Checking for updates...';
-                terminalOutput.appendChild(updateCheck1)
-
-                fetch(updateServer) // Example API
-                    .then(response => {
-                        if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log('Received data:', data);
-                        updateCheck2.textContent = data;
-                        terminalOutput.appendChild(updateCheck2)
-                    })
-                    .catch(error => {
-                        console.error('Fetch error:', error);
-                        updateCheck2.textContent = data;
-                        terminalOutput.appendChild(updateCheck2)
-          });
-            }, 500);
+        window.onload = () => {
+            appendToTerminal('Checking for updates...');
+            fetch("https://optiqube.dogwaffle.world/version-check")
+                .then(res => res.ok ? res.json() : Promise.reject("Fetch error"))
+                .then(data => appendToTerminal(`Latest version: ${data}`))
+                .catch(() => appendToTerminal('Error checking updates.'));
         };
-
-        const volumeSlider = document.getElementById('volume');
-        const volumeValueDisplay = document.getElementById('volumeValue');
-
-        if (volumeSlider && volumeValueDisplay) {
-            volumeSlider.addEventListener('input', (event) => {
-                volumeValueDisplay.textContent = event.target.value;
-            });
-        }
-
-        console.log("Renderer script loaded. UI is ready.");
-
     </script>
 </body>
+
 </html>

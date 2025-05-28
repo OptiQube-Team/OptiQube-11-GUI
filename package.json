@@ -10,17 +10,46 @@
     "type": "git",
     "url": "git+https://github.com/OptiQube-Team/OptiQube-11-GUI.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/OptiQube-Team/OptiQube-11-GUI/issues"
-  },
-  "homepage": "https://github.com/OptiQube-Team/OptiQube-11-GUI#readme",
-  "devDependencies": {
-    "electron": "^28.1.0"
-  },
-  "dependencies": {
-    "adm-zip": "^0.5.16",
-    "node-fetch": "^3.3.2"
+  "build": {
+    "appId": "com.optiqube.gui",
+    "productName": "OptiQube 11",
+    "files": [
+      "**/*",
+      "!node_modules/*/{test,__tests__}/**",
+      "!**/*.md"
+    ],
+    "extraResources": [
+      {
+        "from": "bin/",
+        "to": "bin/",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/OptiQube-Team/OptiQube-11-GUI/issues"
+    },
+    "homepage": "https://github.com/OptiQube-Team/OptiQube-11-GUI#readme",
+    "devDependencies": {
+      "electron": "^28.1.0",
+      "electron-packager": "^17.1.2"
+    },
+    "dependencies": {
+      "adm-zip": "^0.5.16",
+      "node-fetch": "^2.7.0"
+    }
   }
 }

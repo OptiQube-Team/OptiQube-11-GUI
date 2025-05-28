@@ -1,0 +1,1 @@
+START setup.exe batch install allow-secure-boot
