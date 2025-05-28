@@ -7,7 +7,7 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 1150,
     height: 700,
-    frame: false, // Disable default title bar
+    frame: false,
     webPreferences: {
       preload: path.join(__dirname, 'Core/preload.js'),
     }
