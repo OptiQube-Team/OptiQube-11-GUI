@@ -14,6 +14,6 @@ document.getElementById('start-cmd').addEventListener('click', () => {
     window.electronAPI.startCmd();
 });
 
-document.getElementById('initialize-optiqube').addEventListener('click', () => {
+document.getElementById('initialiseoptiqube').addEventListener('click', () => {
     window.electronAPI.optiqubeinit();
 });

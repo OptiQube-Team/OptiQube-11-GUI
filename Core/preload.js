@@ -5,5 +5,5 @@ contextBridge.exposeInMainWorld('electronAPI', {
     maximize: () => ipcRenderer.send('maximize-window'),
     close: () => ipcRenderer.send('close-window'),
     startCmd: () => ipcRenderer.send('start-cmd'),
-    optiqubeinit: () => ipcRenderer.send('initialise-optiqube')
+    optiqubeinit: () => ipcRenderer.send('initialiseoptiqube')
 });

