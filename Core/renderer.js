@@ -13,3 +13,7 @@ document.getElementById('close-btn').addEventListener('click', () => {
 document.getElementById('start-cmd').addEventListener('click', () => {
     window.electronAPI.startCmd();
 });
+
+document.getElementById('initialize-optiqube').addEventListener('click', () => {
+    window.electronAPI.optiqubeinit();
+});
