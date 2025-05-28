@@ -9,3 +9,7 @@ document.getElementById('max-btn').addEventListener('click', () => {
 document.getElementById('close-btn').addEventListener('click', () => {
   window.electronAPI.close();
 });
+
+document.getElementById('start-cmd').addEventListener('click', () => {
+    window.electronAPI.startCmd();
+});
