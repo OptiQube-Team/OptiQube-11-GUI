@@ -1,0 +1,102 @@
+body {
+  font-family: 'Inter', sans-serif;
+  overscroll-behavior: none;
+  /* Prevents "pull-to-refresh" and other overscroll behaviors */
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d3748;
+  /* dark-700 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a5568;
+  /* dark-600 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+  /* dark-500 */
+}
+
+.titlebar {
+  -webkit-app-region: drag;
+  /* Allows dragging the window via this element */
+  user-select: none;
+  /* Prevents text selection */
+}
+
+.window-controls button {
+  -webkit-app-region: no-drag;
+  /* Excludes buttons from the draggable region */
+}
+
+/* Basic styling for a terminal-like appearance */
+.terminal {
+  background-color: #1a202c;
+  /* dark-900 */
+  color: #c0e9d0;
+  /* A light green, good for terminal text */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  /* rounded-lg */
+  height: 420px;
+  overflow-y: auto;
+  font-family: 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", monospace;
+  font-size: 0.875rem;
+  /* text-sm */
+  line-height: 1.5;
+}
+
+.terminal-output div:before {
+  content: "> ";
+  color: #68d391;
+  /* green-400 */
+}
+
+.terminal-input {
+  display: flex;
+  margin-top: 0.5rem;
+  /* mt-2 */
+}
+
+.terminal-input span {
+  color: #68d391;
+  /* green-400 */
+  margin-right: 0.5rem;
+  /* mr-2 */
+}
+
+.terminal-input input {
+  background: transparent;
+  border: none;
+  color: #c0e9d0;
+  flex-grow: 1;
+  outline: none;
+}
+
+.tweak-item {
+  transition: background-color 0.2s ease-in-out;
+}
+
+.tweak-item:hover {
+  background-color: #2d3748;
+  /* dark-700 */
+}
+
+.tweak-item input:checked+label {
+  color: #68d391;
+  /* green-400 */
+  font-weight: 500;
+}
+
+.tweak-item label {
+  cursor: pointer;
+}

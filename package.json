@@ -1,0 +1,22 @@
+{
+  "name": "optiqube-11-gui",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OptiQube-Team/OptiQube-11-GUI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OptiQube-Team/OptiQube-11-GUI/issues"
+  },
+  "homepage": "https://github.com/OptiQube-Team/OptiQube-11-GUI#readme",
+  "devDependencies": {
+    "electron": "^28.1.0"
+  }
+}
